@@ -4,3 +4,5 @@ export const DAY_DISCOUNT = Object.freeze({
   startDay: 1,
   endDay: 25,
 });
+
+export const MENU_DISCOUNT = 2023;
