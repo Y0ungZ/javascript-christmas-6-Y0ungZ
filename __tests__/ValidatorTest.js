@@ -1,7 +1,7 @@
 import { ERROR_MESSAGE } from '../src/constants/messages';
 import Validator from '../src/utils/Validator.js';
 
-describe('유효성 검사 테스트', () => {
+describe('유효성 검사 - 날짜', () => {
   test('올바른 날짜가 입력되면 예외가 발생하지 않는다', () => {
     expect(() => Validator.checkValidDay(3)).not.toThrow();
   });
@@ -25,10 +25,12 @@ describe('유효성 검사 테스트', () => {
   ])('$case', ({ input, message }) => {
     expect(() => Validator.checkValidDay(input)).toThrow(message);
   });
+});
 
+describe('유효성 검사 - 메뉴', () => {
   test('올바른 메뉴가 입력되면 예외가 발생하지 않는다', () => {
     expect(() =>
-      Validator.checkExistMenus(['아이스크림-1', '시저샐러드-1']),
+      Validator.checkValidMenus(['아이스크림-1', '시저샐러드-1']),
     ).not.toThrow();
   });
 
@@ -44,6 +46,6 @@ describe('유효성 검사 테스트', () => {
       message: ERROR_MESSAGE.invalidOrder,
     },
   ])('$case', ({ input, message }) => {
-    expect(() => Validator.checkExistMenus(input)).toThrow(message);
+    expect(() => Validator.checkValidMenus(input)).toThrow(message);
   });
 });
