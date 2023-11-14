@@ -28,6 +28,30 @@ const Validator = {
       throw new ValidationError(ERROR_MESSAGE.invalidOrder);
     }
   },
+
+  checkDuplicateMenus(menus) {
+    const menuSet = new Set();
+    menus.forEach(menu => {
+      const [name, count] = menu.split('-');
+      if (menuSet.has(name))
+        throw new ValidationError(ERROR_MESSAGE.invalidOrder);
+      menuSet.add(name);
+    });
+  },
+
+  checkOnlyDrinkMenus(menus) {
+    const typeSet = new Set();
+    menus.forEach(menu => {
+      const [name, count] = menu.split('-');
+      MENUS.types.forEach(type => {
+        if (MENUS[type][name]) {
+          typeSet.add(type);
+        }
+      });
+    });
+    if (typeSet.size === 1 && Array.from(typeSet)[0] === 'drink')
+      throw new ValidationError(ERROR_MESSAGE.invalidOrder);
+  },
 };
 
 export default Validator;
