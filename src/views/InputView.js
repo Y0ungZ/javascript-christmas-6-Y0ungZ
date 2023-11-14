@@ -18,6 +18,9 @@ const InputView = {
     const input = await Console.readLineAsync(INPUT_MESSAGE.menu);
     try {
       Validator.checkValidMenus(input.split(','));
+      Validator.checkDuplicateMenus(input.split(','));
+      Validator.checkOnlyDrinkMenus(input.split(','));
+      Validator.checkSumMenusCount(input.split(','));
     } catch (e) {
       Console.print(e.toString());
       return this.readMenus();
