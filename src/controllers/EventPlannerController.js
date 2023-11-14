@@ -7,6 +7,7 @@ class EventPlannerController {
     const day = await InputView.readDay();
     const menus = await InputView.readMenus();
     OutputView.printEventText(day);
+    OutputView.printMenu(menus);
   }
 }
 

@@ -10,11 +10,13 @@ const OutputView = {
     Console.print(OUTPUT_MESSAGE.event(day));
   },
 
-  // printMenu() {
-  //   Console.print('<주문 메뉴>');
-  //   // ...
-  // },
-  // // ...
+  printMenu(menus) {
+    Console.print(OUTPUT_MESSAGE.titleMenu);
+    menus.forEach(menu => {
+      const [name, count] = menu.split('-');
+      Console.print(OUTPUT_MESSAGE.menuTemplate(name, count));
+    });
+  },
 };
 
 export default OutputView;
