@@ -24,7 +24,11 @@ const Validator = {
   },
 
   checkValidMenuCount(count) {
-    if (Number(count) < 1 || Number.isNaN(Number(count))) {
+    if (
+      Number(count) < 1
+      || Number(count) > 20
+      || Number.isNaN(Number(count))
+    ) {
       throw new ValidationError(ERROR_MESSAGE.invalidOrder);
     }
   },
@@ -51,6 +55,15 @@ const Validator = {
     });
     if (typeSet.size === 1 && Array.from(typeSet)[0] === 'drink')
       throw new ValidationError(ERROR_MESSAGE.invalidOrder);
+  },
+
+  checkSumMenusCount(menus) {
+    let sum = 0;
+    menus.forEach(menu => {
+      const [name, count] = menu.split('-');
+      sum += count;
+    });
+    this.checkValidMenuCount(sum);
   },
 };
 
