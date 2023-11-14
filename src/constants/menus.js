@@ -29,9 +29,12 @@ const drink = Object.freeze({
   제로콜라: 3000,
 });
 
+const types = Object.freeze(['appetizer', 'main', 'dessert', 'drink']);
+
 export const MENUS = Object.freeze({
   appetizer,
   main,
   dessert,
   drink,
+  types,
 });

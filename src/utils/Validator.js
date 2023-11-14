@@ -1,3 +1,4 @@
+import { MENUS } from '../constants/menus.js';
 import { ERROR_MESSAGE } from '../constants/messages.js';
 import ValidationError from './ValidationError.js';
 
@@ -6,6 +7,19 @@ const Validator = {
     if (Number(day) < 1 || Number(day) > 31 || Number.isNaN(Number(day))) {
       throw new ValidationError(ERROR_MESSAGE.invalidDay);
     }
+  },
+
+  checkExistMenus(menus) {
+    menus.forEach(menu => {
+      const [name, count] = menu.split('-');
+      let flag = false;
+      MENUS.types.forEach(type => {
+        if (MENUS[type][name]) {
+          flag = true;
+        }
+      });
+      if (!flag) throw new ValidationError(ERROR_MESSAGE.invalidOrder);
+    });
   },
 };
 
