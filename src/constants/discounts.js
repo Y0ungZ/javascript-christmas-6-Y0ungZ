@@ -6,6 +6,8 @@ export const DAY_DISCOUNT = Object.freeze({
   startDay: 1,
   endDay: 25,
   special,
+  title: '크리스마스 디데이 할인',
+  specialTitle: '특별 할인',
 });
 
 export const MENU_DISCOUNT = 2023;
