@@ -26,6 +26,11 @@ const OutputView = {
     Console.print(OUTPUT_MESSAGE.positivePrice(price));
   },
 
+  printAfterDiscountPrice(price) {
+    Console.print(OUTPUT_MESSAGE.titleAfterDiscount);
+    Console.print(OUTPUT_MESSAGE.positivePrice(price));
+  },
+
   printGiftMenu(totalPrice) {
     Console.print(OUTPUT_MESSAGE.titleGift);
     const giftEvent = new GiftEvent(totalPrice);
