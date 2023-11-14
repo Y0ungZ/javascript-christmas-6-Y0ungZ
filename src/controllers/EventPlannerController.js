@@ -48,7 +48,10 @@ class EventPlannerController {
 
   showBenefitList(day, menus, totalPrice) {
     if (totalPrice < STANDARD_PRICE) {
-      return 0;
+      return {
+        benefit: 0,
+        discount: 0,
+      };
     }
     return this.caclulateBenefitPrices(day, menus, totalPrice);
   }
