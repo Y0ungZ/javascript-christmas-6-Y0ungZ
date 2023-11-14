@@ -1,8 +1,9 @@
 import { Console } from '@woowacourse/mission-utils';
-import { OUTPUT_MESSAGE } from '../constants/messages.js';
-import { GIFT_COUNT, GIFT_MENU } from '../constants/gift.js';
-import GiftEvent from '../domain/gift-event/GiftEvent.js';
 import { STANDARD_PRICE } from '../constants/discounts.js';
+import { GIFT_COUNT, GIFT_MENU } from '../constants/gift.js';
+import { OUTPUT_MESSAGE } from '../constants/messages.js';
+import BadgeEvent from '../domain/gift-event/BadgeEvent.js';
+import GiftEvent from '../domain/gift-event/GiftEvent.js';
 
 const OutputView = {
   printStartText() {
@@ -59,6 +60,12 @@ const OutputView = {
     } else {
       Console.print(OUTPUT_MESSAGE.positivePrice(totalPrice));
     }
+  },
+
+  printEventBadge(totalBenefitPrice) {
+    Console.print(OUTPUT_MESSAGE.titleEventBadge);
+    const badgeEvent = new BadgeEvent(totalBenefitPrice);
+    Console.print(badgeEvent.calculateBadgeType());
   },
 };
 

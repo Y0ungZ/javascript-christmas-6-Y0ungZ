@@ -1,4 +1,4 @@
-import { BADGE_STANDARD } from '../../constants/badge';
+import { BADGE_STANDARD } from '../../constants/badge.js';
 
 class BadgeEvent {
   constructor(totalBenefitPrice) {

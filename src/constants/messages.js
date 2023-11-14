@@ -23,4 +23,5 @@ export const OUTPUT_MESSAGE = Object.freeze({
   titleBenefitList: '\n<혜택 내역>',
   benefitTemplate: (name, price) => `${name} : -${price.toLocaleString()}원`,
   titleTotalBenefit: '\n<총혜택 금액>',
+  titleEventBadge: '\n<12월 이벤트 배지>',
 });
