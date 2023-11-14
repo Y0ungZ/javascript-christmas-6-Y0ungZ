@@ -72,4 +72,10 @@ describe('유효성 검사 - 메뉴', () => {
       Validator.checkOnlyDrinkMenus(['레드와인-1', '제로콜라-1']),
     ).toThrow(ERROR_MESSAGE.invalidOrder);
   });
+
+  test('메뉴 갯수가 20개를 넘으면 예외가 발생한다', () => {
+    expect(() =>
+      Validator.checkSumMenusCount(['아이스크림-10', '제로콜라-11']),
+    ).toThrow(ERROR_MESSAGE.invalidOrder);
+  });
 });
