@@ -25,4 +25,25 @@ describe('유효성 검사 테스트', () => {
   ])('$case', ({ input, message }) => {
     expect(() => Validator.checkValidDay(input)).toThrow(message);
   });
+
+  test('올바른 메뉴가 입력되면 예외가 발생하지 않는다', () => {
+    expect(() =>
+      Validator.checkExistMenus(['아이스크림-1', '시저샐러드-1']),
+    ).not.toThrow();
+  });
+
+  test.each([
+    {
+      input: [''],
+      case: '메뉴를 입력하지 않으면 예외가 발생한다.',
+      message: ERROR_MESSAGE.invalidOrder,
+    },
+    {
+      input: ['레드와인-1', '불닭볶음면-3'],
+      case: '메뉴판에 존재하지 않는 메뉴 입력 시 예외가 발생한다.',
+      message: ERROR_MESSAGE.invalidOrder,
+    },
+  ])('$case', ({ input, message }) => {
+    expect(() => Validator.checkExistMenus(input)).toThrow(message);
+  });
 });
