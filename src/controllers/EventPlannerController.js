@@ -27,6 +27,7 @@ class EventPlannerController {
     OutputView.printGiftMenu(totalPrice);
     OutputView.printBenefitTitle(totalPrice);
     const benefitPrice = this.showBenefitList(day, menus, totalPrice);
+    OutputView.printTotalBenefitPrice(benefitPrice);
   }
 
   getSumPrice(menus) {

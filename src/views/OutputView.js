@@ -46,6 +46,15 @@ const OutputView = {
   printBenefit(name, price) {
     Console.print(OUTPUT_MESSAGE.benefitTemplate(name, price));
   },
+
+  printTotalBenefitPrice(totalPrice) {
+    Console.print(OUTPUT_MESSAGE.titleTotalBenefit);
+    if (totalPrice > 0) {
+      Console.print(OUTPUT_MESSAGE.negativePrice(totalPrice));
+    } else {
+      Console.print(OUTPUT_MESSAGE.positivePrice(totalPrice));
+    }
+  },
 };
 
 export default OutputView;

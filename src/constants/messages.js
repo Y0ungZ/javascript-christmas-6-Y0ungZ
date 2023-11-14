@@ -16,8 +16,10 @@ export const OUTPUT_MESSAGE = Object.freeze({
   menuTemplate: (name, count) => `${name} ${count}개`,
   titleBeforeDiscount: '\n<할인 전 총주문 금액>',
   positivePrice: price => `${price.toLocaleString()}원`,
+  negativePrice: price => `-${price.toLocaleString()}원`,
   titleGift: '\n<증정 메뉴>',
   noneText: '없음',
   titleBenefitList: '\n<혜택 내역>',
   benefitTemplate: (name, price) => `${name} : -${price.toLocaleString()}원`,
+  titleTotalBenefit: '\n<총혜택 금액>',
 });
