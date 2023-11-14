@@ -26,8 +26,8 @@ class EventPlannerController {
     OutputView.printBeforeDiscountPrice(totalPrice);
     OutputView.printGiftMenu(totalPrice);
     OutputView.printBenefitTitle(totalPrice);
-    const benefitPrice = this.showBenefitList(day, menus, totalPrice);
-    OutputView.printTotalBenefitPrice(benefitPrice);
+    const benefitPrices = this.showBenefitList(day, menus, totalPrice);
+    OutputView.printTotalBenefitPrice(benefitPrices.benefit);
   }
 
   getSumPrice(menus) {
@@ -48,14 +48,17 @@ class EventPlannerController {
     if (totalPrice < STANDARD_PRICE) {
       return 0;
     }
-    return this.caclulateBenefitPrice(day, menus, totalPrice);
+    return this.caclulateBenefitPrices(day, menus, totalPrice);
   }
 
-  caclulateBenefitPrice(day, menus, totalPrice) {
+  caclulateBenefitPrices(day, menus, totalPrice) {
     const dayBenefitPrice = this.getDayDiscountPrice(day);
     const menuBenefitPrice = this.getMenuDiscountPrice(day, menus);
     const giftEventPrice = this.getGiftEventPrice(totalPrice);
-    return dayBenefitPrice + menuBenefitPrice + giftEventPrice;
+    return {
+      benefit: dayBenefitPrice + menuBenefitPrice + giftEventPrice,
+      discount: dayBenefitPrice + menuBenefitPrice,
+    };
   }
 
   getDayDiscountPrice(day) {
