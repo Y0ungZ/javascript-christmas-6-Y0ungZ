@@ -6,6 +6,10 @@ const OutputView = {
     Console.print(OUTPUT_MESSAGE.start);
   },
 
+  printEventText(day) {
+    Console.print(OUTPUT_MESSAGE.event(day));
+  },
+
   // printMenu() {
   //   Console.print('<주문 메뉴>');
   //   // ...
