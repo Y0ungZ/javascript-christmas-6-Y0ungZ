@@ -17,7 +17,7 @@ const InputView = {
   async readMenus() {
     const input = await Console.readLineAsync(INPUT_MESSAGE.menu);
     try {
-      Validator.checkExistMenus(input.split(','));
+      Validator.checkValidMenus(input.split(','));
     } catch (e) {
       Console.print(e.toString());
       return this.readMenus();

@@ -9,7 +9,7 @@ const Validator = {
     }
   },
 
-  checkExistMenus(menus) {
+  checkValidMenus(menus) {
     menus.forEach(menu => {
       const [name, count] = menu.split('-');
       let flag = false;
@@ -19,7 +19,14 @@ const Validator = {
         }
       });
       if (!flag) throw new ValidationError(ERROR_MESSAGE.invalidOrder);
+      this.checkValidMenuCount(count);
     });
+  },
+
+  checkValidMenuCount(count) {
+    if (Number(count) < 1 || Number.isNaN(Number(count))) {
+      throw new ValidationError(ERROR_MESSAGE.invalidOrder);
+    }
   },
 };
 
