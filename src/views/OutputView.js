@@ -17,6 +17,11 @@ const OutputView = {
       Console.print(OUTPUT_MESSAGE.menuTemplate(name, count));
     });
   },
+
+  printBeforeDiscountPrice(price) {
+    Console.print(OUTPUT_MESSAGE.titleBeforeDiscount);
+    Console.print(OUTPUT_MESSAGE.positivePrice(price));
+  },
 };
 
 export default OutputView;
