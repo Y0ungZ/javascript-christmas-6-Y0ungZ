@@ -9,7 +9,9 @@ class EventPlannerController {
     const menus = await InputView.readMenus();
     OutputView.printEventText(day);
     OutputView.printMenu(menus);
-    OutputView.printBeforeDiscountPrice(this.getSumPrice(menus));
+    const totalPrice = this.getSumPrice(menus);
+    OutputView.printBeforeDiscountPrice(totalPrice);
+    OutputView.printGiftMenu(totalPrice);
   }
 
   getSumPrice(menus) {
