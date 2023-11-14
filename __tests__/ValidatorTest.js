@@ -34,6 +34,18 @@ describe('유효성 검사 - 메뉴', () => {
     ).not.toThrow();
   });
 
+  test('올바른 메뉴가 입력되면 예외가 발생하지 않는다', () => {
+    expect(() =>
+      Validator.checkDuplicateMenus(['아이스크림-1', '시저샐러드-1']),
+    ).not.toThrow();
+  });
+
+  test('올바른 메뉴가 입력되면 예외가 발생하지 않는다', () => {
+    expect(() =>
+      Validator.checkOnlyDrinkMenus(['아이스크림-1', '시저샐러드-1']),
+    ).not.toThrow();
+  });
+
   test.each([
     {
       input: [''],
@@ -47,5 +59,17 @@ describe('유효성 검사 - 메뉴', () => {
     },
   ])('$case', ({ input, message }) => {
     expect(() => Validator.checkValidMenus(input)).toThrow(message);
+  });
+
+  test('중복된 메뉴가 입력되면 예외가 발생한다', () => {
+    expect(() =>
+      Validator.checkDuplicateMenus(['아이스크림-1', '아이스크림-1']),
+    ).toThrow(ERROR_MESSAGE.invalidOrder);
+  });
+
+  test('음료만 입력되면 예외가 발생한다', () => {
+    expect(() =>
+      Validator.checkOnlyDrinkMenus(['레드와인-1', '제로콜라-1']),
+    ).toThrow(ERROR_MESSAGE.invalidOrder);
   });
 });
