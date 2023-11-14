@@ -61,7 +61,7 @@ const Validator = {
     let sum = 0;
     menus.forEach(menu => {
       const [name, count] = menu.split('-');
-      sum += count;
+      sum += Number(count);
     });
     this.checkValidMenuCount(sum);
   },
