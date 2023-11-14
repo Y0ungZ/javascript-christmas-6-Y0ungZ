@@ -13,6 +13,17 @@ const InputView = {
     }
     return input;
   },
+
+  async readMenus() {
+    const input = await Console.readLineAsync(INPUT_MESSAGE.menu);
+    try {
+      Validator.checkExistMenus(input.split(','));
+    } catch (e) {
+      Console.print(e.toString());
+      return this.readMenus();
+    }
+    return input.split(',');
+  },
 };
 
 export default InputView;

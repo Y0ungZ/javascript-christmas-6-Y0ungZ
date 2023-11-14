@@ -5,6 +5,8 @@ class EventPlannerController {
   async main() {
     OutputView.printStartText();
     const day = await InputView.readDay();
+    const menus = await InputView.readMenus();
+    console.log(menus);
   }
 }
 
